@@ -1,0 +1,14 @@
+﻿{
+  "Descriptor": {
+    "UId": "9814b704-92fd-4deb-95dd-acd8b6972f47",
+    "Name": "UsrTrafficLight",
+    "ModifiedOnUtc": "\/Date(1782932382000)\/",
+    "Parent": {
+      "UId": "11ab4bcb-9b23-4b6d-9c86-520fae925d75",
+      "Name": "BaseLookup"
+    },
+    "ManagerName": "EntitySchemaManager",
+    "Caption": "Traffic Light",
+    "DependsOn": []
+  }
+}

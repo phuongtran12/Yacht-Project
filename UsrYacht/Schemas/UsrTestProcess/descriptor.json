@@ -4,6 +4,7 @@
     "Name": "UsrTestProcess",
     "ModifiedOnUtc": "\/Date(1782929881000)\/",
     "ManagerName": "ProcessSchemaManager",
-    "Caption": "Test Process"
+    "Caption": "Test Process",
+    "DependsOn": []
   }
 }
