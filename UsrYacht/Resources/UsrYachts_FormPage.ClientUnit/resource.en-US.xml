@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Resources Culture="en-US">
+	<Group Type="String">
+		<Items>
+			<Item Name="Caption" Value="Yachts form page" />
+			<Item Name="LocalizableStrings.addRecord_e6d8ybh_caption.Value" Value="Add new" />
+			<Item Name="LocalizableStrings.addRecord_jlgaczr_caption.Value" Value="Add new" />
+			<Item Name="LocalizableStrings.addRecord_otgt99v_caption.Value" Value="Add new" />
+		</Items>
+	</Group>
+</Resources>
