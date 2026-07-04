@@ -3,8 +3,9 @@
 	<Group Type="String">
 		<Items>
 			<Item Name="Caption" Value="Yachts" />
-			<Item Name="Columns.UsrColumn9.Caption" Value="Drive type" />
+			<Item Name="Columns.UsrColumn14.Caption" Value="Number" />
 			<Item Name="Columns.UsrComment.Caption" Value="Comment" />
+			<Item Name="Columns.UsrDeviceType.Caption" Value="Drive type" />
 			<Item Name="Columns.UsrManager.Caption" Value="Manager" />
 			<Item Name="Columns.UsrName.Caption" Value="Name" />
 			<Item Name="Columns.UsrPassengersCount.Caption" Value="Passengers count" />
