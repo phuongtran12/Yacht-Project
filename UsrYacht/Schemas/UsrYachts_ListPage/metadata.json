@@ -1,6 +1,20 @@
 = MetaData.Schema.UId "b94b61bc-b81a-45ad-8b14-bdddcf52b249"
 = MetaData.Schema.A2 "UsrYachts_ListPage"
 = MetaData.Schema.A5 "6f71e54c-1960-40c9-94f6-073fd67699ab"
++ MetaData.Schema.B2 {
+  "UId": "edb0e5e0-7b3f-6e07-762b-f1e2a8bb5997",
+  "A2": "Label_ruflfc4_caption",
+  "A3": "b94b61bc-b81a-45ad-8b14-bdddcf52b249",
+  "A4": "b94b61bc-b81a-45ad-8b14-bdddcf52b249",
+  "A5": "33884e04-a799-4a8c-9bc6-e65e985364c4"
+}
++ MetaData.Schema.B2 {
+  "UId": "b14bb96f-d570-fe1a-964f-c0160e849ba2",
+  "A2": "Label_5h124v9_caption",
+  "A3": "b94b61bc-b81a-45ad-8b14-bdddcf52b249",
+  "A4": "b94b61bc-b81a-45ad-8b14-bdddcf52b249",
+  "A5": "33884e04-a799-4a8c-9bc6-e65e985364c4"
+}
 = MetaData.Schema.B2.["dad6907c-fd30-c781-3680-4546c3fd73f9"].A4 "b94b61bc-b81a-45ad-8b14-bdddcf52b249"
 = MetaData.Schema.B2.["e7ae710e-6562-fbc2-ba24-ac93d8e2c076"].A4 "b94b61bc-b81a-45ad-8b14-bdddcf52b249"
 = MetaData.Schema.B2.["31e1cae9-bf6b-bb43-e922-ac61fdc10520"].A4 "b94b61bc-b81a-45ad-8b14-bdddcf52b249"
@@ -20,6 +34,8 @@
 = MetaData.Schema.B2.["5ffa1509-5337-5131-c81d-62c2b05764f8"].A4 "b94b61bc-b81a-45ad-8b14-bdddcf52b249"
 = MetaData.Schema.B2.["e4787142-5b79-ba75-8318-a0b4cefc3a6a"].A4 "b94b61bc-b81a-45ad-8b14-bdddcf52b249"
 ~ MetaData.Schema.B2 [
+  "edb0e5e0-7b3f-6e07-762b-f1e2a8bb5997",
+  "b14bb96f-d570-fe1a-964f-c0160e849ba2",
   "dad6907c-fd30-c781-3680-4546c3fd73f9",
   "e7ae710e-6562-fbc2-ba24-ac93d8e2c076",
   "31e1cae9-bf6b-bb43-e922-ac61fdc10520",
