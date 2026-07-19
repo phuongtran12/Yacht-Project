@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Resources Culture="en-US">
+	<Group Type="String">
+		<Items>
+			<Item Name="Columns.UsrRegistrationNumber.Caption" Value="Registration Number" />
+			<Item Name="Columns.UsrRegistrationNumber.Description" Value="RegistrationNumber" />
+			<Item Name="EventsProcessSchema.Caption" Value="Business process" />
+		</Items>
+	</Group>
+</Resources>

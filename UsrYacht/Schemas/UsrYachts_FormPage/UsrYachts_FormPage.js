@@ -1,4 +1,4 @@
-define("UsrYachts_FormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, function/**SCHEMA_ARGS*/()/**SCHEMA_ARGS*/ {
+define("UsrYachts_FormPage", /**SCHEMA_DEPS*/["@creatio-devkit/common"]/**SCHEMA_DEPS*/, function/**SCHEMA_ARGS*/(sdk)/**SCHEMA_ARGS*/ {
 	return {
 		viewConfigDiff: /**SCHEMA_VIEW_CONFIG_DIFF*/[
 			{
@@ -13,6 +13,26 @@ define("UsrYachts_FormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, function/**SCHE
 					"underlineSelectedTabColor": "auto",
 					"headerBackgroundColor": "auto",
 					"allowToggleClose": true
+				}
+			},
+			{
+				"operation": "merge",
+				"name": "GeneralInfoTabContainer",
+				"values": {
+					"gap": {
+						"columnGap": "large",
+						"rowGap": "none"
+					},
+					"visible": true,
+					"padding": {
+						"top": "none",
+						"right": "none",
+						"bottom": "none",
+						"left": "none"
+					},
+					"color": "transparent",
+					"borderRadius": "none",
+					"alignItems": "stretch"
 				}
 			},
 			{
@@ -79,6 +99,22 @@ define("UsrYachts_FormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, function/**SCHE
 				"parentName": "Button_do05m9n",
 				"propertyName": "menuItems",
 				"index": 0
+			},
+			{
+				"operation": "insert",
+				"name": "RunWebServiceMenuItem",
+				"values": {
+					"type": "crt.MenuItem",
+					"caption": "#ResourceString(RunWebServiceMenuItem_caption)#",
+					"visible": true,
+					"clicked": {
+						"request": "usr.RunMaxPriceWebServiceRequest"
+					},
+					"icon": "rocket-icon"
+				},
+				"parentName": "Button_do05m9n",
+				"propertyName": "menuItems",
+				"index": 1
 			},
 			{
 				"operation": "insert",
@@ -167,7 +203,29 @@ define("UsrYachts_FormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, function/**SCHE
 			},
 			{
 				"operation": "insert",
-				"name": "ComboBox_fi1jtf1",
+				"name": "NumberInput_tyges5y",
+				"values": {
+					"layoutConfig": {
+						"column": 1,
+						"colSpan": 1,
+						"row": 4,
+						"rowSpan": 1
+					},
+					"type": "crt.NumberInput",
+					"label": "$Resources.Strings.PDS_UsrLength_0h1svas",
+					"control": "$PDS_UsrLength_0h1svas",
+					"readonly": false,
+					"placeholder": "",
+					"labelPosition": "auto",
+					"tooltip": ""
+				},
+				"parentName": "SideAreaProfileContainer",
+				"propertyName": "items",
+				"index": 3
+			},
+			{
+				"operation": "insert",
+				"name": "DriveType",
 				"values": {
 					"layoutConfig": {
 						"column": 1,
@@ -176,35 +234,21 @@ define("UsrYachts_FormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, function/**SCHE
 						"rowSpan": 1
 					},
 					"type": "crt.ComboBox",
-					"label": "$Resources.Strings.PDS_UsrDeviceType_8ra8mp6",
+					"label": "$Resources.Strings.PDS_UsrYachtDriveType_s7brzml",
 					"ariaLabel": "",
 					"isAddAllowed": true,
-					"showValueAsLink": true,
+					"showValueAsLink": false,
 					"labelPosition": "auto",
 					"controlActions": [],
 					"listActions": [],
 					"tooltip": "",
-					"control": "$PDS_UsrDeviceType_8ra8mp6"
+					"control": "$PDS_UsrYachtDriveType_s7brzml",
+					"visible": true,
+					"readonly": false,
+					"placeholder": ""
 				},
 				"parentName": "GeneralInfoTabContainer",
 				"propertyName": "items",
-				"index": 0
-			},
-			{
-				"operation": "insert",
-				"name": "addRecord_2wn7b2f",
-				"values": {
-					"code": "addRecord",
-					"type": "crt.ComboboxSearchTextAction",
-					"icon": "combobox-add-new",
-					"caption": "#ResourceString(addRecord_2wn7b2f_caption)#",
-					"clicked": {
-						"request": "crt.CreateRecordFromLookupRequest",
-						"params": {}
-					}
-				},
-				"parentName": "ComboBox_fi1jtf1",
-				"propertyName": "listActions",
 				"index": 0
 			},
 			{
@@ -304,7 +348,8 @@ define("UsrYachts_FormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, function/**SCHE
 					"tooltip": "",
 					"readonly": false,
 					"multiline": false,
-					"labelPosition": "auto"
+					"labelPosition": "auto",
+					"required": "$UsrIsCommentRequired"
 				},
 				"parentName": "GeneralInfoTabContainer",
 				"propertyName": "items",
@@ -387,6 +432,28 @@ define("UsrYachts_FormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, function/**SCHE
 			},
 			{
 				"operation": "insert",
+				"name": "NumberInput_gczyzfv",
+				"values": {
+					"layoutConfig": {
+						"column": 1,
+						"colSpan": 1,
+						"row": 5,
+						"rowSpan": 1
+					},
+					"type": "crt.NumberInput",
+					"label": "$Resources.Strings.PDS_UsrCrewCount_lfq5reo",
+					"control": "$PDS_UsrCrewCount_lfq5reo",
+					"readonly": false,
+					"placeholder": "",
+					"labelPosition": "auto",
+					"tooltip": ""
+				},
+				"parentName": "GeneralInfoTabContainer",
+				"propertyName": "items",
+				"index": 8
+			},
+			{
+				"operation": "insert",
 				"name": "City",
 				"values": {
 					"layoutConfig": {
@@ -412,7 +479,49 @@ define("UsrYachts_FormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, function/**SCHE
 				},
 				"parentName": "GeneralInfoTabContainer",
 				"propertyName": "items",
-				"index": 8
+				"index": 9
+			},
+			{
+				"operation": "insert",
+				"name": "ComboBox_d3bknus",
+				"values": {
+					"layoutConfig": {
+						"column": 2,
+						"colSpan": 1,
+						"row": 6,
+						"rowSpan": 1
+					},
+					"type": "crt.ComboBox",
+					"label": "$Resources.Strings.PDS_UsrCaptain_gh62th2",
+					"ariaLabel": "",
+					"isAddAllowed": true,
+					"showValueAsLink": true,
+					"labelPosition": "auto",
+					"controlActions": [],
+					"listActions": [],
+					"tooltip": "",
+					"control": "$PDS_UsrCaptain_gh62th2"
+				},
+				"parentName": "GeneralInfoTabContainer",
+				"propertyName": "items",
+				"index": 10
+			},
+			{
+				"operation": "insert",
+				"name": "addRecord_wamwh08",
+				"values": {
+					"code": "addRecord",
+					"type": "crt.ComboboxSearchTextAction",
+					"icon": "combobox-add-new",
+					"caption": "#ResourceString(addRecord_wamwh08_caption)#",
+					"clicked": {
+						"request": "crt.CreateRecordFromLookupRequest",
+						"params": {}
+					}
+				},
+				"parentName": "ComboBox_d3bknus",
+				"propertyName": "listActions",
+				"index": 0
 			},
 			{
 				"operation": "insert",
@@ -752,7 +861,7 @@ define("UsrYachts_FormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, function/**SCHE
 							"MySuperValidator": {
 								"type": "usr.DGValidator",
 								"params": {
-									"minValue": 200,
+									"minValue": 301,
 									"message": "#ResourceString(PriceCannotBeLess)#"
 								}
 							}
@@ -784,7 +893,7 @@ define("UsrYachts_FormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, function/**SCHE
 							"MySuperValidator": {
 								"type": "usr.DGValidator",
 								"params": {
-									"minValue": 2,
+									"minValue": 3,
 									"message": "#ResourceString(PassengersCountCannotBeLess)#"
 								}
 							}
@@ -813,22 +922,12 @@ define("UsrYachts_FormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, function/**SCHE
 							"path": "PDS.UsrComment"
 						}
 					},
+					"UsrIsCommentRequired": {
+						"value": false
+					},
 					"PDS_UsrDeviceType_8ra8mp6": {
 						"modelConfig": {
 							"path": "PDS.UsrDeviceType"
-						}
-					},
-					"PDS_UsrDeviceType_8ra8mp6_List": {
-						"isCollection": true,
-						"modelConfig": {
-							"sortingConfig": {
-								"default": [
-									{
-										"columnName": "Name",
-										"direction": "asc"
-									}
-								]
-							}
 						}
 					},
 					"PDS_UsrColumn14_do3rtpe": {
@@ -935,6 +1034,52 @@ define("UsrYachts_FormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, function/**SCHE
 					},
 					"Category_MultiSelect_List_Items_Predefined_Filter": {
 						"value": null
+					},
+					"PDS_UsrYachtDriveType_s7brzml": {
+						"modelConfig": {
+							"path": "PDS.UsrYachtDriveType"
+						}
+					},
+					"PDS_UsrYachtDriveType_s7brzml_List": {
+						"isCollection": true,
+						"modelConfig": {
+							"sortingConfig": {
+								"default": [
+									{
+										"columnName": "Name",
+										"direction": "asc"
+									}
+								]
+							}
+						}
+					},
+					"PDS_UsrLength_0h1svas": {
+						"modelConfig": {
+							"path": "PDS.UsrLength"
+						}
+					},
+					"PDS_UsrCrewCount_lfq5reo": {
+						"modelConfig": {
+							"path": "PDS.UsrCrewCount"
+						}
+					},
+					"PDS_UsrCaptain_gh62th2": {
+						"modelConfig": {
+							"path": "PDS.UsrCaptain"
+						}
+					},
+					"PDS_UsrCaptain_gh62th2_List": {
+						"isCollection": true,
+						"modelConfig": {
+							"sortingConfig": {
+								"default": [
+									{
+										"columnName": "Name",
+										"direction": "asc"
+									}
+								]
+							}
+						}
 					}
 				}
 			},
@@ -1017,24 +1162,50 @@ define("UsrYachts_FormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, function/**SCHE
 		]/**SCHEMA_MODEL_CONFIG_DIFF*/,
 		handlers: /**SCHEMA_HANDLERS*/[
     {
+        request: "crt.HandleViewModelInitRequest",
+        handler: async (request, next) => {
+            await next.handle(request);
+            try {
+                const minPrice = await Terrasoft.SysSettings.querySysSettingsValue("MinPriceToRequireYachtComment");
+                request.$context.UsrMinPriceForComment = minPrice || 8000;
+                
+                const price = await request.$context.PDS_UsrPrice_qk9gust;
+                request.$context.UsrIsCommentRequired = (price >= request.$context.UsrMinPriceForComment);
+
+                // Tự động điền Manager bằng Current User Contact khi thêm mới (CardState = "add" hoặc "copy")
+                const cardState = await request.$context.CardState;
+                if (cardState === "add" || cardState === "copy") {
+                    const sysValuesService = new sdk.SysValuesService();
+                    const sysValues = await sysValuesService.loadSysValues();
+                    const currentUserContact = sysValues.userContact;
+                    if (currentUserContact) {
+                        request.$context.PDS_UsrManager_28g5gkz = currentUserContact;
+                    }
+                }
+            } catch (e) {
+                request.$context.UsrMinPriceForComment = 8000;
+            }
+        }
+    },
+    {
         request: "usr.PushButtonRequest",
-        /* Implementation of the custom query handler. */
+        
         handler: async (request, next) => {
             console.log("Button works...");
             Terrasoft.showInformation("My button was pressed.");
             var price = await request.$context.PDS_UsrPrice_qk9gust;
             console.log("Price = " + price);
             request.$context.PDS_UsrComment_vj13x7m = "comment from JS code!";
-            /* Call the next handler if it exists and return its result. */
+         
             return next?.handle(request);
         }
     },
 			{
     request: "crt.HandleViewModelAttributeChangeRequest",
-    /* The custom implementation of the system query handler. */
+  
     handler: async (request, next) => {
-        if (request.attributeName === 'PDS_UsrPrice_qk9gust' ||              // if price changed
-            request.attributeName === 'PDS_UsrPassengersCount_fhf70tg' ) {   // or Passenger count changed
+        if (request.attributeName === 'PDS_UsrPrice_qk9gust' ||           
+            request.attributeName === 'PDS_UsrPassengersCount_fhf70tg' ) {  
             let price = await request.$context.PDS_UsrPrice_qk9gust;
             let passengers = await request.$context.PDS_UsrPassengersCount_fhf70tg;
             let ticket_price = 0;
@@ -1043,10 +1214,124 @@ define("UsrYachts_FormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, function/**SCHE
             }
             request.$context.PDS_UsrTicketPrice_6p1bcko = ticket_price;
         }
+
+        if (request.attributeName === 'PDS_UsrPrice_qk9gust') {
+            const price = await request.$context.PDS_UsrPrice_qk9gust;
+            const minPriceLimit = request.$context.UsrMinPriceForComment || 8000;
+            request.$context.UsrIsCommentRequired = (price >= minPriceLimit);
+        }
+
+     
+        return next?.handle(request);
+    }
+},
+{
+    request: "crt.SaveRecordRequest",
+    handler: async (request, next) => {
+        const price = await request.$context.PDS_UsrPrice_qk9gust;
+        const passengers = await request.$context.PDS_UsrPassengersCount_fhf70tg;
+        const comment = await request.$context.PDS_UsrComment_vj13x7m;
+        const minPriceLimit = request.$context.UsrMinPriceForComment || 8000;
+
+        if (price <= 300) {
+            request.$context.executeRequest({
+                type: "crt.ShowDialogRequest",
+                $context: request.$context,
+                dialogConfig: {
+                    data: {
+                        message: "Price per day, EUR must be greater than 300.",
+                        actions: [{
+                            key: "OK",
+                            config: {
+                                color: "primary",
+                                caption: "OK"
+                            }
+                        }]
+                    }
+                }
+            });
+            return false;
+        }
+
+        if (passengers <= 2) {
+            request.$context.executeRequest({
+                type: "crt.ShowDialogRequest",
+                $context: request.$context,
+                dialogConfig: {
+                    data: {
+                        message: "Passengers count must be greater than 2.",
+                        actions: [{
+                            key: "OK",
+                            config: {
+                                color: "primary",
+                                caption: "OK"
+                            }
+                        }]
+                    }
+                }
+            });
+            return false;
+        }
+
+        if (price >= minPriceLimit && (!comment || comment.trim() === "")) {
+            request.$context.executeRequest({
+                type: "crt.ShowDialogRequest",
+                $context: request.$context,
+                dialogConfig: {
+                    data: {
+                        message: `Comment is required because Price per day is greater than or equal to ${minPriceLimit} EUR.`,
+                        actions: [{
+                            key: "OK",
+                            config: {
+                                color: "primary",
+                                caption: "OK"
+                            }
+                        }]
+                    }
+                }
+            });
+            return false;
+        }
+
+        return next.handle(request);
+    }
+},
+{
+    request: "usr.RunMaxPriceWebServiceRequest",
+    /* Implementation of the custom query handler. */
+    handler: async (request, next) => {
+        console.log("Run web service button works...");
+
+        // get id from drive type lookup type object
+        var typeObject = await request.$context.PDS_UsrDeviceType_8ra8mp6;
+        var selectedDriveTypeId = "";
+        if (typeObject) {
+            selectedDriveTypeId = typeObject.value;
+        }
+        /* Create an instance of the HTTP client from @creatio-devkit/common. */
+        const httpClientService = new sdk.HttpClientService();
+
+        /* Specify the URL to run web service method. */
+        const baseUrl = Terrasoft.utils.uri.getConfigurationWebServiceBaseUrl();
+        const transferName = "rest";
+        const serviceName = "YachtService";
+        const methodName = "GetMaxPriceByDriveTypeId";
+        const endpoint = Terrasoft.combinePath(baseUrl, transferName, serviceName, methodName);
+
+        //const endpoint = "http://localhost/D1_Studio/0/rest/YachtService/GetMaxPriceByDriveTypeId";
+        /* Send a POST HTTP request. The HTTP client converts the response body from JSON to a JS object automatically. */
+        var params = {
+            driveTypeId: selectedDriveTypeId
+        };
+        const response = await httpClientService.post(endpoint, params);
+
+        console.log("response max price = " + response.body.GetMaxPriceByDriveTypeIdResult);
+
         /* Call the next handler if it exists and return its result. */
         return next?.handle(request);
     }
 }
+			
 ]/**SCHEMA_HANDLERS*/,
 		converters: /**SCHEMA_CONVERTERS*/{}/**SCHEMA_CONVERTERS*/,
 		validators: /**SCHEMA_VALIDATORS*/{
@@ -1084,3 +1369,885 @@ define("UsrYachts_FormPage", /**SCHEMA_DEPS*/[]/**SCHEMA_DEPS*/, function/**SCHE
 }/**SCHEMA_VALIDATORS*/
 	};
 });
+sửa trong đây, đặt log hết cho t 
+</```
+_MODEL_STUDIO_
+[PDS]
+[GridDetail_2tcuw3fDS]
+[GridDetail_2tcuw3f]
+[PDS_UsrPrice_qk9gust]
+[PDS_UsrStatus_x6hvih3]
+[PDS_UsrPassengersCount_fhf70tg]
+[PDS_UsrManager_28g5gkz]
+[PDS_UsrComment_vj13x7m]
+[PDS_UsrDeviceType_8ra8mp6]
+[PDS_UsrColumn14_do3rtpe]
+[PDS_UsrCountry_o0u6h9l]
+[PDS_UsrCity_c4qd802]
+[PDS_UsrTicketPrice_6p1bcko]
+[PDS_UsrManagerEmail_wjxhhb3]
+[PDS_UsrYachtDriveType_s7brzml]
+[PDS_UsrLength_0h1svas]
+[PDS_UsrCrewCount_lfq5reo]
+[PDS_UsrCaptain_gh62th2]
+[UsrName]
+[UsrIsCommentRequired]
+[Category_MultiSelect_List_Items_Predefined_Filter]
+[PDS_UsrStatus_x6hvih3_List]
+[PDS_UsrManager_28g5gkz_List]
+[PDS_UsrCountry_o0u6h9l_List]
+[PDS_UsrCity_c4qd802_List]
+[PDS_UsrYachtDriveType_s7brzml_List]
+[PDS_UsrCaptain_gh62th2_List]
+[GridDetail_2tcuw3fDS_UsrStartDate]
+[GridDetail_2tcuw3fDS_UsrEndDate]
+[GridDetail_2tcuw3fDS_UsrComment]
+[GridDetail_2tcuw3fDS_CreatedOn]
+[GridDetail_2tcuw3fDS_UsrCustomer]
+[GridDetail_2tcuw3fDS_UsrParentYacht]
+[GridDetail_2tcuw3fDS_Id]
+[GridDetailSearchFilter_9b1cxo5_GridDetail_2tcuw3f]
+[GridDetailSearchFilter_9b1cxo5_SearchValue]
+[GridDetailSearchFilter_9b1cxo5_FilteredColumnsGroups]
+[Id]
+[Tabs]
+[GeneralInfoTabContainer]
+[Feed]
+[AttachmentList]
+[Button_do05m9n]
+[RunWebServiceMenuItem]
+[PushMeButton]
+[Price]
+[TicketPrice]
+[NumberInput_tyges5y]
+[DriveType]
+[Status]
+[PassengersCount]
+[Manager]
+[Comment]
+[ManagerEmail]
+[Country]
+[Input_2jkheh6]
+[NumberInput_gczyzfv]
+[City]
+[ComboBox_d3bknus]
+[addRecord_wamwh08]
+[Category_MultiSelect]
+[ExpansionPanel_thbr70o]
+[GridContainer_nevpxoz]
+[FlexContainer_yun0kkf]
+[GridDetailAddBtn_qmggmw2]
+[GridDetailRefreshBtn_93wf2vl]
+[GridDetailSettingsBtn_5oxoo1u]
+[GridDetailExportDataBtn_2ykja8f]
+[GridDetailImportDataBtn_a3q0c34]
+[GridDetailSearchFilter_9b1cxo5]
+[GridContainer_briopx7]
+[RunAvgTicketPriceProcess]
+[UsrName_label]
+[Price_label]
+[TicketPrice_label]
+[NumberInput_tyges5y_label]
+[DriveType_label]
+[Status_label]
+[PassengersCount_label]
+[Manager_label]
+[Comment_label]
+[ManagerEmail_label]
+[Country_label]
+[Input_2jkheh6_label]
+[NumberInput_gczyzfv_label]
+[City_label]
+[ComboBox_d3bknus_label]
+[addRecord_wamwh08_caption]
+[Category_MultiSelect_label]
+[ExpansionPanel_thbr70o_title]
+[GridDetailAddBtn_qmggmw2_caption]
+[GridDetailRefreshBtn_93wf2vl_caption]
+[GridDetailSettingsBtn_5oxoo1u_caption]
+[GridDetailExportDataBtn_2ykja8f_caption]
+[GridDetailImportDataBtn_a3q0c34_caption]
+[GridDetailSearchFilter_9b1cxo5_placeholder]
+[PriceCannotBeLess]
+[PassengersCountCannotBeLess]
+[RunAvgTicketPriceProcess_caption]
+[RunWebServiceMenuItem_caption]
+[PushMeButton_caption]
+[Button_do05m9n_caption]
+[GridDetail_2tcuw3fDS_UsrStartDate]
+[GridDetail_2tcuw3fDS_UsrEndDate]
+[GridDetail_2tcuw3fDS_UsrComment]
+[GridDetail_2tcuw3fDS_CreatedOn]
+[GridDetail_2tcuw3fDS_UsrCustomer]
+[GridDetail_2tcuw3fDS_UsrParentYacht]
+[AttachmentListDS_Name]
+[GridDetail_2tcuw3f]
+[Yachts form page (Business rules)]
+[UsrYachts_FormPageBusinessRule]
+[AddonSchemaManager]
+[89e77863-0ffe-4a32-a8dc-b68407605034]
+[83864fdb-c81a-404b-9a50-2acb49d93c3f]
+[46714ec0-b7d1-4419-8a07-907feee2d3b9]
+[UsrYacht]
+[3a2d6f51-1bfc-4c17-aacb-b53de4866b7c]
+[00000000-0000-0000-0000-000000000000]
+[SaveSchemaCommand]
+[SaveSchema]
+[SaveDesignItemInternal]
+[SaveDesignItem]
+[SyncInvokeSaveSchema]
+[Invoke]
+[ProcessMessage5]
+[ProcessMessage11]
+[Process]
+[DispatchAndReleasePump]
+[HandleRequest]
+[AsyncMessagePump]
+[OnAsyncReceiveComplete]
+[UnhandledExceptionFrame]
+[Complete]
+[Set]
+[EnqueueAndDispatch]
+[Enqueue]
+[CompleteParseAndEnqueue]
+[HandleParseIncomingMessage]
+[SyncContinue]
+[BeginProcessInboundRequest]
+[ProcessHttpContextAsync]
+[BeginHttpContextReceived]
+[HttpContextReceived]
+[HandleRequest]
+[BeginRequest]
+[OnBeginRequest]
+[PartialTrustInvoke]
+[OnBeginRequestWithFlow]
+[IOCallback]
+[UnhandledExceptionFrame]
+[PerformIOCompletionCallback]
+[SaveSchemaItem]
+[InternalSaveSchemaInDb]
+[InternalSaveSchemaInDB]
+[InternalSaveSchema]
+[SaveDesignItemInternal]
+[SaveSchemaCommand]
+[SaveDesignItem]
+[SyncInvokeSaveSchema]
+[Invoke]
+[ProcessMessage5]
+[ProcessMessage11]
+[Process]
+[DispatchAndReleasePump]
+[HandleRequest]
+[AsyncMessagePump]
+[OnAsyncReceiveComplete]
+[UnhandledExceptionFrame]
+[Complete]
+[Set]
+[EnqueueAndDispatch]
+[Enqueue]
+[CompleteParseAndEnqueue]
+[HandleParseIncomingMessage]
+[SyncContinue]
+[BeginProcessInboundRequest]
+[ProcessHttpContextAsync]
+[BeginHttpContextReceived]
+[HttpContextReceived]
+[HandleRequest]
+[BeginRequest]
+[OnBeginRequest]
+[PartialTrustInvoke]
+[OnBeginRequestWithFlow]
+[IOCallback]
+[UnhandledExceptionFrame]
+[PerformIOCompletionCallback]
+[UsrColumn9]
+[UsrYachts]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[UsrDeviceType]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+[AddColumn]
+[AddQueryColumn]
+[AddQueryColumns]
+[GetSchemaColumnByPath]
+[CreateColumn]
+...

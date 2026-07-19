@@ -18,11 +18,13 @@
 			<Item Name="LocalizableStrings.PriceCannotBeLess.Value" Value="Price cannot be less than 200 EUR" />
 			<Item Name="LocalizableStrings.PushMeButton_caption.Value" Value="Push me!" />
 			<Item Name="LocalizableStrings.RunAvgTicketPriceProcess_caption.Value" Value="Start calc avg price process" />
-			<Item Name="LocalizableStrings.addRecord_2wn7b2f_caption.Value" Value="Add new" />
+			<Item Name="LocalizableStrings.RunWebServiceMenuItem_caption.Value" Value="Run max price web service" />
+			<Item Name="LocalizableStrings.addRecord_a2av5rd_caption.Value" Value="Add new" />
 			<Item Name="LocalizableStrings.addRecord_e6d8ybh_caption.Value" Value="Add new" />
 			<Item Name="LocalizableStrings.addRecord_jlgaczr_caption.Value" Value="Add new" />
 			<Item Name="LocalizableStrings.addRecord_ntrpeps_caption.Value" Value="Add new" />
 			<Item Name="LocalizableStrings.addRecord_otgt99v_caption.Value" Value="Add new" />
+			<Item Name="LocalizableStrings.addRecord_wamwh08_caption.Value" Value="Add new" />
 			<Item Name="LocalizableStrings.addRecord_wdxerki_caption.Value" Value="Add new" />
 		</Items>
 	</Group>
